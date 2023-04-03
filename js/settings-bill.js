@@ -21,38 +21,66 @@
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
 
-
 function settingsAddBtnClicked() {
-    let billItem = document.querySelector('.billItemTypeWithSettings:checked').value
-    
+    let billItem = document.querySelector(".billItemTypeWithSettings:checked").value;
+
     let callTotal = document.querySelector(".callTotalSettings");
     let smsTotal = document.querySelector(".smsTotalSettings");
     let grandTotal = document.querySelector(".totalSettings");
     let colorChange = document.querySelector(".settingsColor");
 
-    // Warning & settings
-    let callCostSetting = document.querySelector(".callCostSetting");
 
-    switch (billItem) {
-        case "call":
-            callTotal.innerHTML = Number(callTotal.textContent) + callCostSetting.valueAsNumber ;
-            break;
-        case "sms":
-            smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
-            break;
-        default:
-            console.log(" Invalid Input");
-    }
-    grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
+    var callCostSetting = document.querySelector(".callCostSetting").valueAsNumber ;
+    var smsCostSetting = document.querySelector(".smsCostSetting").valueAsNumber;
 
-    if (Number(grandTotal.textContent) > 30 && Number(grandTotal.textContent) < 50) {
+    var warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
+    var criticalLevelSetting = document.querySelector(".criticalLevelSetting").valueAsNumber;
+
+        if (colorChange.style.color != "red"){
+
+            switch (billItem) {
+                case "call":
+                    callTotal.innerHTML = Number(callTotal.textContent) + callCostSetting ;
+                    break;
+                case "sms":
+                    smsTotal.innerHTML = Number(smsTotal.textContent) + smsCostSetting ;
+                    break;
+                default:
+                    console.log(" Invalid Input");
+            }
+        }
+        grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
+
+        if (Number(grandTotal.textContent) > warningLevelSetting && Number(grandTotal.textContent) <= criticalLevelSetting) {
+            colorChange.style.color = "orange";
+        } else if (Number(grandTotal.textContent) > criticalLevelSetting) {
+            colorChange.style.color = "red";
+        } else {
+            colorChange.style.color = "black";
+        }
+}
+
+
+
+const settingsAddBtn = document.querySelector(".settingsAddBtn");
+settingsAddBtn.addEventListener("click", function () {
+    settingsAddBtnClicked();
+});
+
+const updateSettingsBtn = document.querySelector(".updateSettings");
+updateSettingsBtn.addEventListener("click", () =>{
+    let grandTotal = document.querySelector(".totalSettings");
+    let colorChange = document.querySelector(".settingsColor");
+    
+    var warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
+    var criticalLevelSetting = document.querySelector(".criticalLevelSetting").valueAsNumber;
+
+    if (Number(grandTotal.textContent) > warningLevelSetting && Number(grandTotal.textContent) <= criticalLevelSetting) {
         colorChange.style.color = "orange";
-    } else if (Number(grandTotal.textContent) > 50) {
+    } else if (Number(grandTotal.textContent) > criticalLevelSetting) {
         colorChange.style.color = "red";
     } else {
         colorChange.style.color = "black";
-    }
-}
+    }    
 
-const settingsAddBtn = document.querySelector(".settingsAddBtn");
-settingsAddBtn.addEventListener("click", settingsAddBtnClicked);
+} );
