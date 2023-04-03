@@ -11,3 +11,34 @@
 //  * once done looping over all the entries - display the total onto the screen in the billTotal element
 
 //link the function to a click event on the calculate button
+
+function calculateBtnClicked() {
+    let billTotalElement = document.querySelector(".billTotal");
+    let billString = document.querySelector(".billString").value;
+    let billItems = billString.split(",");
+    let billTotal = 0;
+
+    for (var i = 0; i < billItems.length; i++) {
+        let billItem = billItems[i].trim();
+        if (billItem === "call") {
+            billTotal += 2.75;
+        } else if (billItem === "sms") {
+            billTotal += 0.75;
+        }
+    }
+    var roundedBillTotal = billTotal.toFixed(2)
+    billTotalElement.innerHTML = roundedBillTotal;
+
+    var total = document.querySelector(".total");
+
+    if (roundedBillTotal > 20 && roundedBillTotal < 30) {
+        total.style.color = "orange";
+    } else if (roundedBillTotal > 30) {
+        total.style.color = "red";
+    } else {
+        total.style.color = "black";
+    }
+}
+
+const calculateBtn = document.querySelector(".calculateBtn");
+calculateBtn.addEventListener("click", calculateBtnClicked);

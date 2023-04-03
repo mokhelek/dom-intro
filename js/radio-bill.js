@@ -1,12 +1,32 @@
-// get a reference to the sms or call radio buttons
 
-//get a reference to the add button
+function radioAddBtnClicked() {
+    let billItem = document.querySelector('.billItemTypeRadio:checked').value
 
-//create a variable that will keep track of the total bill
+    let callTotal = document.querySelector(".callTotalTwo");
+    let smsTotal = document.querySelector(".smsTotalTwo");
+    let grandTotal = document.querySelector(".totalTwo");
+    let colorChange = document.querySelector(".orange");
 
-//add an event listener for when the add button is pressed
+    switch (billItem) {
+        case "call":
+            callTotal.innerHTML = Number(callTotal.textContent) + 2.75;
+            break;
+        case "sms":
+            smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
+            break;
+        default:
+            console.log(" Invalid Input");
+    }
+    grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
 
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the running total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen
+    if (Number(grandTotal.textContent) > 30 && Number(grandTotal.textContent) < 50) {
+        colorChange.style.color = "orange";
+    } else if (Number(grandTotal.textContent) > 50) {
+        colorChange.style.color = "red";
+    } else {
+        colorChange.style.color = "black";
+    }
+}
+
+const radioAddBtn = document.querySelector(".radioBillAddBtn");
+radioAddBtn.addEventListener("click", radioAddBtnClicked);
