@@ -1,7 +1,6 @@
 
 function radioAddBtnClicked() {
     let billItem = document.querySelector('.billItemTypeRadio:checked').value
-
     let callTotal = document.querySelector(".callTotalTwo");
     let smsTotal = document.querySelector(".smsTotalTwo");
     let grandTotal = document.querySelector(".totalTwo");

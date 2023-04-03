@@ -158,6 +158,8 @@
             </div>
           </div>
         </div>
+
+
         <div class="six columns box">
           <h3>Bill with settings</h3>
           <div class="">Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.</div>
@@ -176,28 +178,28 @@
             <div class="six columns">
               <h5>Bill type</h5>
               <label class="">
-                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" />
+                <input type="radio" name="billItemTypeWithSettings" value = "call" class="billItemTypeWithSettings" />
                 <span class="label-body">Call</span>
               </label>
               <label class="">
-                <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings" />
+                <input type="radio" name="billItemTypeWithSettings" value = "sms" class="billItemTypeWithSettings" />
                 <span class="label-body">SMS</span>
               </label>
-              <button class="button-primary" type="button" name="button">Add</button>
+              <button class="button-primary settingsAddBtn" type="button" name="button">Add</button>
 
               <h5>Totals</h5>
               <table>
                 <tr>
                   <td>Call total</td>
-                  <td>R<span class="callTotalSettings">34.00</span></td>
+                  <td>R<span class="callTotalSettings">0</span></td>
                 </tr>
                 <tr>
                   <td>SMS total</td>
-                  <td>R<span class="smsTotalSettings">7.35</span></td>
+                  <td>R<span class="smsTotalSettings">0</span></td>
                 </tr>
                 <tr>
                   <td>Total</td>
-                  <td>R<span class="totalSettings">41.35</span></td>
+                  <td class="settingsColor">R<span class="totalSettings">0</span></td>
                 </tr>
               </table>
             </div>
@@ -215,6 +217,8 @@
             </div>
           </div>
         </div>
+
+
       </div>
     </div>
     <script src="js/calculate-bill.js" charset="utf-8"></script>

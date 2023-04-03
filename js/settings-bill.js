@@ -20,3 +20,39 @@
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
+
+
+function settingsAddBtnClicked() {
+    let billItem = document.querySelector('.billItemTypeWithSettings:checked').value
+    
+    let callTotal = document.querySelector(".callTotalSettings");
+    let smsTotal = document.querySelector(".smsTotalSettings");
+    let grandTotal = document.querySelector(".totalSettings");
+    let colorChange = document.querySelector(".settingsColor");
+
+    // Warning & settings
+    let callCostSetting = document.querySelector(".callCostSetting");
+
+    switch (billItem) {
+        case "call":
+            callTotal.innerHTML = Number(callTotal.textContent) + callCostSetting.valueAsNumber ;
+            break;
+        case "sms":
+            smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
+            break;
+        default:
+            console.log(" Invalid Input");
+    }
+    grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
+
+    if (Number(grandTotal.textContent) > 30 && Number(grandTotal.textContent) < 50) {
+        colorChange.style.color = "orange";
+    } else if (Number(grandTotal.textContent) > 50) {
+        colorChange.style.color = "red";
+    } else {
+        colorChange.style.color = "black";
+    }
+}
+
+const settingsAddBtn = document.querySelector(".settingsAddBtn");
+settingsAddBtn.addEventListener("click", settingsAddBtnClicked);
