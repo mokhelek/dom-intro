@@ -22,19 +22,16 @@ function addBtnClicked() {
     switch (billItem.toLowerCase().trim() ) {
         case "call":
             callTotal.innerHTML = Number(callTotal.textContent) + 2.75;
-            if(errorMessage.style.display === "block"){
-                errorMessage.style.display = "none";
-            }
             break;
         case "sms":
             smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
-            if(errorMessage.style.display === "block"){
-                errorMessage.style.display = "none";
-            }
             break;
         default:
-            
             errorMessage.style.display = "block";
+            setTimeout(()=>{
+                errorMessage.style.display = "none";
+            },5000)
+            
             
     }
     grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
