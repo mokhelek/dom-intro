@@ -13,7 +13,7 @@
 
 function addBtnClicked() {
     let billItem = document.querySelector(".billTypeText").value; // This contains either sms or call
-
+    let errorMessage = document.getElementById("textInputError");
     let callTotal = document.querySelector(".callTotalOne");
     let smsTotal = document.querySelector(".smsTotalOne");
     let grandTotal = document.querySelector(".totalOne");
@@ -22,12 +22,20 @@ function addBtnClicked() {
     switch (billItem.toLowerCase().trim() ) {
         case "call":
             callTotal.innerHTML = Number(callTotal.textContent) + 2.75;
+            if(errorMessage.style.display === "block"){
+                errorMessage.style.display = "none";
+            }
             break;
         case "sms":
             smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
+            if(errorMessage.style.display === "block"){
+                errorMessage.style.display = "none";
+            }
             break;
         default:
-            alert("Please enter either 'SMS' or 'Call'")
+            
+            errorMessage.style.display = "block";
+            
     }
     grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
 
