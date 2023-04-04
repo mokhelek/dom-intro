@@ -1,4 +1,3 @@
-
 var callCostSetting = document.querySelector(".callCostSetting").valueAsNumber;
 var smsCostSetting = document.querySelector(".smsCostSetting").valueAsNumber;
 var warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
@@ -22,12 +21,10 @@ function settingsAddBtnClicked() {
                     if (callCostSetting) {
                         callTotal.innerHTML = Number(callTotal.textContent) + callCostSetting;
                     } else {
-                        invalidCallAmount.style.display = "block"
-                        setTimeout(
-                            () =>{
-                                invalidCallAmount.style.display = "none"
-                            }, 5000
-                        )
+                        invalidCallAmount.style.display = "block";
+                        setTimeout(() => {
+                            invalidCallAmount.style.display = "none";
+                        }, 5000);
                     }
                     break;
 
@@ -35,12 +32,10 @@ function settingsAddBtnClicked() {
                     if (smsCostSetting) {
                         smsTotal.innerHTML = Number(smsTotal.textContent) + smsCostSetting;
                     } else {
-                        invalidSMSAmount.style.display = "block"
-                        setTimeout(
-                            () =>{
-                                invalidSMSAmount.style.display = "none"
-                            }, 5000
-                        )
+                        invalidSMSAmount.style.display = "block";
+                        setTimeout(() => {
+                            invalidSMSAmount.style.display = "none";
+                        }, 5000);
                     }
                     break;
                 default:
@@ -60,13 +55,11 @@ function settingsAddBtnClicked() {
         } else {
             colorChange.style.color = "black";
         }
-    }else{
-        invalidWarningCriticalAmount.style.display = "block"
-        setTimeout(
-            () =>{
-                invalidWarningCriticalAmount.style.display = "none"
-            }, 5000
-        )
+    } else {
+        invalidWarningCriticalAmount.style.display = "block";
+        setTimeout(() => {
+            invalidWarningCriticalAmount.style.display = "none";
+        }, 5000);
     }
 }
 
@@ -83,20 +76,15 @@ function updateSettingsAddBtnClicked() {
         colorChange.style.color = "black";
     }
 
-
     callCostSetting = document.querySelector(".callCostSetting").valueAsNumber;
     smsCostSetting = document.querySelector(".smsCostSetting").valueAsNumber;
     warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
     criticalLevelSetting = document.querySelector(".criticalLevelSetting").valueAsNumber;
 
-    settingsUpdatedMessage.style.display = "block"
-    setTimeout(
-        () =>{
-            settingsUpdatedMessage.style.display = "none"
-        }, 5000
-    )
-    
-
+    settingsUpdatedMessage.style.display = "block";
+    setTimeout(() => {
+        settingsUpdatedMessage.style.display = "none";
+    }, 5000);
 }
 
 const updateSettingsBtn = document.querySelector(".updateSettings");
@@ -104,3 +92,15 @@ updateSettingsBtn.addEventListener("click", updateSettingsAddBtnClicked);
 
 const settingsAddBtn = document.querySelector(".settingsAddBtn");
 settingsAddBtn.addEventListener("click", settingsAddBtnClicked);
+
+function refreshSettingsInput() {
+    let callTotal = document.querySelector(".callTotalSettings");
+    let smsTotal = document.querySelector(".smsTotalSettings");
+    let grandTotal = document.querySelector(".totalSettings");
+    let colorChange = document.querySelector(".settingsColor");
+
+    grandTotal.innerHTML = 0;
+    smsTotal.innerHTML = 0;
+    callTotal.innerHTML = 0;
+    colorChange.style.color = "black";
+}

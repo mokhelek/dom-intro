@@ -42,3 +42,13 @@ function calculateBtnClicked() {
 
 const calculateBtn = document.querySelector(".calculateBtn");
 calculateBtn.addEventListener("click", calculateBtnClicked);
+
+function refreshStringInput(){
+    let billTotalElement = document.querySelector(".billTotal");
+    let total = document.querySelector(".total");
+
+    billTotalElement.innerHTML = 0;
+    total.style.color = "black";
+
+
+}

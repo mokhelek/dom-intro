@@ -47,3 +47,16 @@ function addBtnClicked() {
 
 const addButton = document.querySelector(".addToBillBtn");
 addButton.addEventListener("click", addBtnClicked);
+
+
+function refreshTextInput(){
+    let callTotal = document.querySelector(".callTotalOne");
+    let smsTotal = document.querySelector(".smsTotalOne");
+    let grandTotal = document.querySelector(".totalOne");
+    let colorChange = document.querySelector(".red");
+
+   grandTotal.innerHTML = 0;
+   smsTotal.innerHTML = 0;
+   callTotal.innerHTML = 0;
+   colorChange.style.color == "black"
+}

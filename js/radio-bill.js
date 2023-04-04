@@ -42,3 +42,15 @@ function radioAddBtnClicked() {
 
 const radioAddBtn = document.querySelector(".radioBillAddBtn");
 radioAddBtn.addEventListener("click", radioAddBtnClicked);
+
+function refreshRadioInput(){
+    let callTotal = document.querySelector(".callTotalTwo");
+    let smsTotal = document.querySelector(".smsTotalTwo");
+    let grandTotal = document.querySelector(".totalTwo");
+    let colorChange = document.querySelector(".orange");
+
+    grandTotal.innerHTML = 0;
+    smsTotal.innerHTML = 0;
+    callTotal.innerHTML = 0;
+    colorChange.style.color = "black";
+}
