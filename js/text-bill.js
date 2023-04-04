@@ -19,7 +19,7 @@ function addBtnClicked() {
     let grandTotal = document.querySelector(".totalOne");
     let colorChange = document.querySelector(".red");
 
-    switch (billItem.trim()) {
+    switch (billItem.toLowerCase().trim() ) {
         case "call":
             callTotal.innerHTML = Number(callTotal.textContent) + 2.75;
             break;
@@ -27,7 +27,7 @@ function addBtnClicked() {
             smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
             break;
         default:
-            console.log(" nothing ....");
+            alert("Please enter either 'SMS' or 'Call'")
     }
     grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
 

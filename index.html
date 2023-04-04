@@ -1,235 +1,253 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <link rel="stylesheet" href="css/skeleton.css" />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="twelve columns box">
-          <h1>Total phone bill</h1>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <!-- <link rel="stylesheet" href="css/skeleton.css" /> -->
+        <link rel="stylesheet" href="css/style.css" />
 
-          <div class="">During the codeX bootcamp you had to create the function below.</div>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    </head>
 
-          <br />
+    <body style="background-color: #fdfdfd;">
+        <div class="container">
+            <br />
+            <div class="row">
+                <div style="width: 90%" class="col-12 card card-body">
+                    <h1>Total phone bill</h1>
 
-          <div class="">
-            <i
-              >Write a function called <code>totalPhoneBill</code> that takes in a string parameter that contains calls made and sms's sent seperated with commas. Calculate the total bill for the data provided. <br /><br />
-              In the string <code>call, sms, call, sms, sms</code> there are 2 calls and 3 sms's.
-              <br />
-              <br />
-              The cost is:
-              <ul>
-                <li>R2.75 per call</li>
-                <li>R0.65 per sms</li>
-              </ul>
-            </i>
-          </div>
+                    <div id="text" >During the codeX bootcamp you had to create the function below.</div>
 
-          <div class="">We will now use this scenario to learn how to use JavaScript in the browser to create interactive screen widgets using the DOM.</div>
+                    <br />
+
+                    <div class="">
+                        <p id="text"> 
+                            Write a function called <code>totalPhoneBill</code> that takes in a string parameter that contains calls made and sms's sent seperated with commas. Calculate the total bill for the data provided. <br /><br />
+                            In the string <code>call, sms, call, sms, sms</code> there are 2 calls and 3 sms's.
+                            <br />
+                            <br />
+                            The cost is:
+                            <ul>
+                                <li>R2.75 per call</li>
+                                <li>R0.65 per sms</li>
+                            </ul>
+                          </p>
+                    </div>
+
+                    <div id="text">We will now use this scenario to learn how to use JavaScript in the browser to create interactive screen widgets using the DOM.</div>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div style="margin-bottom: 1rem;" class="col-md-6">
+                    <div class="card card-body">
+                        <h3>Calculate bill</h3>
+                        <p id="text">
+                          Enter a string with 'call' or 'sms' separated by commas. When the Calculate button is pressed show the total phone bill for the string entered.
+                        </p>
+
+                        <div class="">
+                            <i id="text">Calls costs R2.75 and a SMS R0.75</i>
+                        </div>
+                        <br />
+                        <div class="">
+                            <i id="text">If the total cost exceed R20.00 show the total cost in orange, if over R30 show it in red.</i>
+                        </div>
+
+                        <hr />
+
+                        <!-- billString calculateBtn billTotal -->
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5>Enter bill string</h5>
+                                <textarea name="name" style="height: 60px; width: 100%; margin-bottom: 0.5rem" class="billString"></textarea>
+                                <button class="btn btn-primary btn-sm calculateBtn" style="width: 100%" on type="button" name="button">Calculate</button>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 style="color: #4f4f4f">Total amount:</h6>
+                                <span class="total">R<span class="billTotal">0.00</span> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <h3>Text input bill</h3>
+
+                        <div class="">
+                            <i id="text">Enter call or sms in the textbox. Update the appropriate total and the global total when the ADD button in pressed.</i>
+                        </div>
+                        <div class="">
+                            <i id="text">Calls costs R2.75 and a SMS R0.75</i>
+                        </div>
+
+                        <div class="">
+                            <i id="text">If the total cost exceed R30.00 show the total cost in orange, if over R50 show it in red.</i>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h6>Bill type</h6>
+                                <input type="text" style="width: 100%; height: 50px; margin-bottom: 0.5rem" value="" placeholder="enter 'call' or 'sms' " class="billTypeText" />
+                                <button style="width: 100%" class="btn btn-primary btn-sm addToBillBtn" type="button" name="button">Add</button>
+                            </div>
+
+                            <div class="col-md-5">
+                                <h5>Totals</h5>
+                                <table style="width: 100%">
+                                    <tr style="border-bottom: 1px rgb(165, 165, 165) solid">
+                                        <td style="color: #959595">Call total</td>
+                                        <td>&nbsp; R<span class="callTotalOne">0</span></td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px rgb(165, 165, 165) solid">
+                                        <td style="color: #959595">SMS total</td>
+                                        <td>&nbsp; R<span class="smsTotalOne">0</span></td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px rgb(165, 165, 165) solid">
+                                        <td style="color: #959595">Total</td>
+                                        <td class="red">&nbsp; R<span class="totalOne">0</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div style="margin-bottom: 1rem;"  class="col-md-6">
+                    <div class="card card-body">
+                        <h3>Radio button bill</h3>
+
+                        <div id="text">Select the call or sms radio button. Update the appropriate total and the global total when the ADD button in pressed.</div>
+                        <br />
+                        <div class="">
+                            <i id="text">Calls costs R2.75 and a SMS R0.75</i>
+                        </div>
+
+                        <div class="">
+                            <i id="text">If the total cost exceed R30.00 show the total cost in orange, if over R50 show it in red.</i>
+                        </div>
+                        <br />
+                        <div id="text">What is the benefit of using radio buttons?</div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-7">
+                                <h5>Bill type</h5>
+                                <label class="">
+                                    <input type="radio" name="billItemType" class="billItemTypeRadio" value="call" />
+                                    <span class="label-body">Call</span>
+                                </label>
+                                <br />
+                                <label class="">
+                                    <input type="radio" name="billItemType" class="billItemTypeRadio" value="sms" />
+                                    <span class="label-body">SMS</span>
+                                </label>
+                                <button class="btn btn-primary btn-sm radioBillAddBtn" style="width: 100%" type="button" name="button">Add</button>
+                            </div>
+                            <div class="col-5">
+                                <center>
+                                    <h5>Totals</h5>
+                                    <table style="width: 100%">
+                                        <tr style="border-bottom: 1px #959595 solid">
+                                            <td style="color: #959595">Call total</td>
+                                            <td>R<span class="callTotalTwo">0</span></td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px #959595 solid">
+                                            <td style="color: #959595">SMS total</td>
+                                            <td>R<span class="smsTotalTwo">0</span></td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px #959595 solid">
+                                            <td style="color: #959595">Total</td>
+                                            <td class="orange">R<span class="totalTwo">0</span></td>
+                                        </tr>
+                                    </table>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-body">
+                        <h3>Bill with settings</h3>
+                        <div id="text">Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.</div>
+                        <br />
+                        <div class="">
+                            <i id="text">Calls costs should now be configurable using the settings section.</i>
+                        </div>
+                        <br />
+                        <div class="">
+                            <i id="text">If the total cost exceed the warning level show the total cost in orange, if it exceeds the critical level show it in red and prevent any new costs from being added. The warning and critical level should both be configurable now.</i>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Bill type</h5>
+                                <label class="">
+                                    <input type="radio" name="billItemTypeWithSettings" value="call" class="billItemTypeWithSettings" />
+                                    <span class="label-body">Call</span>
+                                </label>
+                                <br />
+                                <label class="">
+                                    <input type="radio" name="billItemTypeWithSettings" value="sms" class="billItemTypeWithSettings" />
+                                    <span class="label-body">SMS</span>
+                                </label>
+                                <br />
+                                <button class="btn btn-primary btn-sm settingsAddBtn" style="margin-bottom: 0.5rem; width: 100%; margin-top: 0.5rem" type="button" name="button">Add</button>
+
+                                <h6>Totals</h6>
+                                <table style="width: 100%">
+                                    <tr style="border-bottom: 1px #959595 solid">
+                                        <td style="color: #afafaf">Call total</td>
+                                        <td>R<span class="callTotalSettings">0</span></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px #959595 solid">
+                                        <td style="color: #afafaf">SMS total</td>
+                                        <td>R<span class="smsTotalSettings">0</span></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px #959595 solid">
+                                        <td style="color: #afafaf">Total</td>
+                                        <td class="settingsColor">R<span class="totalSettings">0</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h5>Settings</h5>
+                                <label for="exampleEmailInput">Call cost</label>
+                                <input style="width: 100%;" class=" callCostSetting" type="number" placeholder="eg. 2.55" />
+                                <label for="exampleEmailInput">SMS cost</label>
+                                <input style="width: 100%;"  class="smsCostSetting" type="number" placeholder="eg. 0.65" />
+                                <label for="">Warning level</label>
+                                <input style="width: 100%;"  class="warningLevelSetting" type="number" placeholder="eg. 30.00" class="warningLevel" />
+                                <label style="width: 100%;" for="">Critical level</label>
+                                <input style="width: 100%;"  class="criticalLevelSetting" type="number" placeholder="eg. 65.00" />
+                                <button class="btn btn-primary btn-sm updateSettings" style="width: 100%;margin-top: 0.5rem;" type="button" name="button">Update settings</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="six columns box">
-          <h3>Calculate bill</h3>
-          Enter a string with 'call' or 'sms' separated by commas. When the Calculate button is pressed show the total phone bill for the string entered.
+        <script src="js/calculate-bill.js" charset="utf-8"></script>
+        <script src="js/text-bill.js" charset="utf-8"></script>
+        <script src="js/radio-bill.js" charset="utf-8"></script>
+        <script src="js/settings-bill.js" charset="utf-8"></script>
 
-          <div class="">
-            <i>Calls costs R2.75 and a SMS R0.75</i>
-          </div>
-          <br />
-          <div class="">
-            <i>If the total cost exceed R20.00 show the total cost in orange, if over R30 show it in red.</i>
-          </div>
-
-          <hr />
-
-          <!-- billString calculateBtn billTotal -->
-
-          <div class="row">
-            <div class="eight columns">
-              <h5>Enter bill string</h5>
-              <textarea name="name" rows="20" cols="40" class="billString" class="billString"></textarea>
-              <button class="button-primary calculateBtn" on type="button" name="button">Calculate</button>
-            </div>
-            <div class="four columns">
-              <strong>Total amount:</strong>
-              <span class="total">R<span class="billTotal">0.00</span> </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="six columns box">
-          <h3>Text input bill</h3>
-
-          <div class="">
-            <i>Enter call or sms in the textbox. Update the appropriate total and the global total when the ADD button in pressed.</i>
-          </div>
-          <div class="">
-            <i>Calls costs R2.75 and a SMS R0.75</i>
-          </div>
-
-          <div class="">
-            <i>If the total cost exceed R30.00 show the total cost in orange, if over R50 show it in red.</i>
-          </div>
-
-          <hr />
-
-          <div class="row">
-            <div class="six columns">
-              <label for="">Bill type</label>
-              <input type="text" name="" value="" placeholder="enter 'call' or 'sms' " class="billTypeText" />
-              <button class="button-primary addToBillBtn" type="button" name="button">Add</button>
-            </div>
-            <div class="six columns">
-              <h5>Totals</h5>
-              <table>
-                <tr>
-                  <td>Call total</td>
-                  <td>R<span class="callTotalOne">0</span></td>
-                </tr>
-                <tr>
-                  <td>SMS total</td>
-                  <td>R<span class="smsTotalOne">0</span></td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td class="red">R<span class="totalOne">0</span></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="six columns box">
-          <h3>Radio button bill</h3>
-
-          <div class="">Select the call or sms radio button. Update the appropriate total and the global total when the ADD button in pressed.</div>
-          <br />
-          <div class="">
-            <i>Calls costs R2.75 and a SMS R0.75</i>
-          </div>
-
-          <div class="">
-            <i>If the total cost exceed R30.00 show the total cost in orange, if over R50 show it in red.</i>
-          </div>
-          <br />
-          <div class="">What is the benefit of using radio buttons?</div>
-
-          <hr />
-
-          <div class="row">
-            <div class="six columns">
-              <h5>Bill type</h5>
-              <label class="">
-                <input type="radio" name="billItemType" class="billItemTypeRadio" value="call" />
-                <span class="label-body">Call</span>
-              </label>
-              <label class="">
-                <input type="radio" name="billItemType" class="billItemTypeRadio" value="sms" />
-                <span class="label-body">SMS</span>
-              </label>
-              <button class="button-primary radioBillAddBtn" type="button" name="button">Add</button>
-            </div>
-            <div class="six columns">
-              <h5>Totals</h5>
-              <table>
-                <tr>
-                  <td>Call total</td>
-                  <td>R<span class="callTotalTwo">0</span></td>
-                </tr>
-                <tr>
-                  <td>SMS total</td>
-                  <td>R<span class="smsTotalTwo">0</span></td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td class="orange">R<span class="totalTwo">0</span></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="six columns box">
-          <h3>Bill with settings</h3>
-          <div class="">Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.</div>
-          <br />
-          <div class="">
-            <i>Calls costs should now be configurable using the settings section.</i>
-          </div>
-          <br />
-          <div class="">
-            <i>If the total cost exceed the warning level show the total cost in orange, if it exceeds the critical level show it in red and prevent any new costs from being added. The warning and critical level should both be configurable now.</i>
-          </div>
-
-          <hr />
-
-          <div class="row">
-        
-            <div class="six columns">
-
-          
-
-              <h5>Bill type</h5>
-              <label class="">
-                <input type="radio" name="billItemTypeWithSettings" value = "call" class="billItemTypeWithSettings" />
-                <span class="label-body">Call</span>
-              </label>
-              <label class="">
-                <input type="radio" name="billItemTypeWithSettings" value = "sms" class="billItemTypeWithSettings" />
-                <span class="label-body">SMS</span>
-              </label>
-              <button class="button-primary settingsAddBtn" type="button" name="button">Add</button>
-
-              <h5>Totals</h5>
-              <table>
-                <tr>
-                  <td>Call total</td>
-                  <td>R<span class="callTotalSettings">0</span></td>
-                </tr>
-                <tr>
-                  <td>SMS total</td>
-                  <td>R<span class="smsTotalSettings">0</span></td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td class="settingsColor">R<span class="totalSettings">0</span></td>
-                </tr>
-              </table>
-            </div>
-
-
-            <div class="six columns">
-              <h5>Settings</h5>
-              <label for="exampleEmailInput">Call cost</label>
-              <input class="u-full-width callCostSetting" type="number" placeholder="eg. 2.55" />
-              <label for="exampleEmailInput">SMS cost</label>
-              <input class="u-full-width smsCostSetting" type="number" placeholder="eg. 0.65" />
-              <label for="">Warning level</label>
-              <input class="u-full-width warningLevelSetting" type="number" placeholder="eg. 30.00" class="warningLevel" />
-              <label for="">Critical level</label>
-              <input class="u-full-width criticalLevelSetting" type="number" placeholder="eg. 65.00" />
-              <button class="button-primary updateSettings" type="button" name="button">Update settings</button>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-    <script src="js/calculate-bill.js" charset="utf-8"></script>
-    <script src="js/text-bill.js" charset="utf-8"></script>
-    <script src="js/radio-bill.js" charset="utf-8"></script>
-    <script src="js/settings-bill.js" charset="utf-8"></script>
-  </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
 </html>
