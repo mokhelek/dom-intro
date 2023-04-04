@@ -1,56 +1,44 @@
-// get a reference to the sms or call radio buttons
 
-// get refences to all the settings fields
-
-//get a reference to the add button
-
-//get a reference to the 'Update settings' button
-
-// create a variables that will keep track of all the settings
-
-// create a variables that will keep track of all three totals.
-
-//add an event listener for when the 'Update settings' button is pressed
-
-//add an event listener for when the add button is pressed
-
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the call / sms total
-// * add the appropriate value to the overall total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen.
-// * check the value thresholds and display the total value in the right color.
+var callCostSetting = document.querySelector(".callCostSetting").valueAsNumber;
+var smsCostSetting = document.querySelector(".smsCostSetting").valueAsNumber;
+var warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
+var criticalLevelSetting = document.querySelector(".criticalLevelSetting").valueAsNumber;
 
 function settingsAddBtnClicked() {
-    let billItem = document.querySelector(".billItemTypeWithSettings:checked").value;
-
+    let billItem = document.querySelector(".billItemTypeWithSettings:checked");
     let callTotal = document.querySelector(".callTotalSettings");
     let smsTotal = document.querySelector(".smsTotalSettings");
     let grandTotal = document.querySelector(".totalSettings");
     let colorChange = document.querySelector(".settingsColor");
 
-
-    var callCostSetting = document.querySelector(".callCostSetting").valueAsNumber ;
-    var smsCostSetting = document.querySelector(".smsCostSetting").valueAsNumber;
-
-    var warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
-    var criticalLevelSetting = document.querySelector(".criticalLevelSetting").valueAsNumber;
-
-        if (colorChange.style.color != "red"){
-
-            switch (billItem) {
+    if (colorChange.style.color != "red") {
+        if (billItem) {
+            switch (billItem.value) {
                 case "call":
-                    callTotal.innerHTML = Number(callTotal.textContent) + callCostSetting ;
+                    if (callCostSetting) {
+                        callTotal.innerHTML = Number(callTotal.textContent) + callCostSetting;
+                    } else {
+                        alert("enter valid call amount");
+                    }
                     break;
+
                 case "sms":
-                    smsTotal.innerHTML = Number(smsTotal.textContent) + smsCostSetting ;
+                    if (smsCostSetting) {
+                        smsTotal.innerHTML = Number(smsTotal.textContent) + smsCostSetting;
+                    } else {
+                        alert("enter a valid sms cost");
+                    }
                     break;
                 default:
-                    console.log(" Invalid Input");
+                    alert("Please enter valid input");
             }
+        } else {
+            alert("Please Pick SMS or Call");
         }
-        grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
+    }
 
+    if (warningLevelSetting && criticalLevelSetting) {
+        grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
         if (Number(grandTotal.textContent) > warningLevelSetting && Number(grandTotal.textContent) <= criticalLevelSetting) {
             colorChange.style.color = "orange";
         } else if (Number(grandTotal.textContent) > criticalLevelSetting) {
@@ -58,22 +46,14 @@ function settingsAddBtnClicked() {
         } else {
             colorChange.style.color = "black";
         }
+    }else{
+        alert("Please enter both Warning and critical level amounts")
+    }
 }
 
-
-
-const settingsAddBtn = document.querySelector(".settingsAddBtn");
-settingsAddBtn.addEventListener("click", function () {
-    settingsAddBtnClicked();
-});
-
-const updateSettingsBtn = document.querySelector(".updateSettings");
-updateSettingsBtn.addEventListener("click", () =>{
+function updateSettingsAddBtnClicked() {
     let grandTotal = document.querySelector(".totalSettings");
     let colorChange = document.querySelector(".settingsColor");
-    
-    var warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
-    var criticalLevelSetting = document.querySelector(".criticalLevelSetting").valueAsNumber;
 
     if (Number(grandTotal.textContent) > warningLevelSetting && Number(grandTotal.textContent) <= criticalLevelSetting) {
         colorChange.style.color = "orange";
@@ -81,6 +61,18 @@ updateSettingsBtn.addEventListener("click", () =>{
         colorChange.style.color = "red";
     } else {
         colorChange.style.color = "black";
-    }    
+    }
 
-} );
+
+    callCostSetting = document.querySelector(".callCostSetting").valueAsNumber;
+    smsCostSetting = document.querySelector(".smsCostSetting").valueAsNumber;
+    warningLevelSetting = document.querySelector(".warningLevelSetting").valueAsNumber;
+    criticalLevelSetting = document.querySelector(".criticalLevelSetting").valueAsNumber;
+
+}
+
+const updateSettingsBtn = document.querySelector(".updateSettings");
+updateSettingsBtn.addEventListener("click", updateSettingsAddBtnClicked);
+
+const settingsAddBtn = document.querySelector(".settingsAddBtn");
+settingsAddBtn.addEventListener("click", settingsAddBtnClicked);
