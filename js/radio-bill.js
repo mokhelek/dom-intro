@@ -18,10 +18,10 @@ function radioAddBtnClicked() {
 
     switch (billItem.value) {
         case "call":
-            callTotal.innerHTML = Number(callTotal.textContent) + 2.75;
+            callTotal.innerHTML = (Number(callTotal.textContent) + 2.75).toFixed(2);
             break;
         case "sms":
-            smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
+            smsTotal.innerHTML = (Number(smsTotal.textContent) + 0.75).toFixed(2) ;
             break;
         default:
             radioInputError.style.display = "block";
@@ -29,7 +29,7 @@ function radioAddBtnClicked() {
                 radioInputError.style.display = "none";
             },5000)
     }
-    grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
+    grandTotal.innerHTML = (Number(smsTotal.textContent) + Number(callTotal.textContent)).toFixed(2);
 
     if (Number(grandTotal.textContent) > 30 && Number(grandTotal.textContent) < 50) {
         colorChange.style.color = "orange";

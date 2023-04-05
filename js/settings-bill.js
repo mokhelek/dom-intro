@@ -20,7 +20,7 @@ function settingsAddBtnClicked() {
             switch (billItem.value) {
                 case "call":
                     if (callCostSetting) {
-                        callTotal.innerHTML = Number(callTotal.textContent) + callCostSetting;
+                        callTotal.innerHTML = (Number(callTotal.textContent) + callCostSetting).toFixed(2);
                     } else {
                         invalidCallAmount.style.display = "block";
                         setTimeout(() => {
@@ -31,7 +31,7 @@ function settingsAddBtnClicked() {
 
                 case "sms":
                     if (smsCostSetting) {
-                        smsTotal.innerHTML = Number(smsTotal.textContent) + smsCostSetting;
+                        smsTotal.innerHTML = (Number(smsTotal.textContent) + smsCostSetting).toFixed(2) ;
                     } else {
                         invalidSMSAmount.style.display = "block";
                         setTimeout(() => {
@@ -56,7 +56,7 @@ function settingsAddBtnClicked() {
     }
 
     if (warningLevelSetting && criticalLevelSetting) {
-        grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
+        grandTotal.innerHTML = (Number(smsTotal.textContent) + Number(callTotal.textContent)).toFixed(2) ;
         if (Number(grandTotal.textContent) > warningLevelSetting && Number(grandTotal.textContent) <= criticalLevelSetting) {
             colorChange.style.color = "orange";
         } else if (Number(grandTotal.textContent) > criticalLevelSetting) {
