@@ -6,6 +6,7 @@ var criticalLevelSetting = document.querySelector(".criticalLevelSetting").value
 let invalidCallAmount = document.getElementById("invalidCallAmount");
 let invalidSMSAmount = document.getElementById("invalidSMSAmount");
 let invalidWarningCriticalAmount = document.getElementById("invalidWarningCriticalAmount");
+let invalidCallorSMS = document.getElementById("invalidCallorSMS");
 
 function settingsAddBtnClicked() {
     let billItem = document.querySelector(".billItemTypeWithSettings:checked");
@@ -42,7 +43,10 @@ function settingsAddBtnClicked() {
                     alert("Please enter valid input");
             }
         } else {
-            alert("Please Pick SMS or Call");
+            invalidCallorSMS.style.display = "block";
+            setTimeout(() => {
+                invalidCallorSMS.style.display = "none";
+            }, 5000);
         }
     }
 
@@ -99,8 +103,8 @@ function refreshSettingsInput() {
     let grandTotal = document.querySelector(".totalSettings");
     let colorChange = document.querySelector(".settingsColor");
 
-    grandTotal.innerHTML = 0;
-    smsTotal.innerHTML = 0;
-    callTotal.innerHTML = 0;
+    grandTotal.innerHTML = (0).toFixed(2) ;
+    smsTotal.innerHTML = (0).toFixed(2);
+    callTotal.innerHTML = (0).toFixed(2);
     colorChange.style.color = "black";
 }

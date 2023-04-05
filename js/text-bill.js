@@ -55,8 +55,8 @@ function refreshTextInput(){
     let grandTotal = document.querySelector(".totalOne");
     let colorChange = document.querySelector(".red");
 
-   grandTotal.innerHTML = 0;
-   smsTotal.innerHTML = 0;
-   callTotal.innerHTML = 0;
-   colorChange.style.color == "black"
+   grandTotal.innerHTML = (0).toFixed(2) ;
+   smsTotal.innerHTML =  (0).toFixed(2) ;
+   callTotal.innerHTML = (0).toFixed(2) ;
+   colorChange.style.color = "black"
 }

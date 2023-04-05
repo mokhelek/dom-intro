@@ -49,8 +49,8 @@ function refreshRadioInput(){
     let grandTotal = document.querySelector(".totalTwo");
     let colorChange = document.querySelector(".orange");
 
-    grandTotal.innerHTML = 0;
-    smsTotal.innerHTML = 0;
-    callTotal.innerHTML = 0;
+    grandTotal.innerHTML = (0).toFixed(2) ;
+    smsTotal.innerHTML = (0).toFixed(2) ;
+    callTotal.innerHTML = (0).toFixed(2) ;
     colorChange.style.color = "black";
 }

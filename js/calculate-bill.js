@@ -19,7 +19,7 @@ function calculateBtnClicked() {
     let billTotal = 0;
 
     for (var i = 0; i < billItems.length; i++) {
-        let billItem = billItems[i].trim();
+        let billItem = billItems[i].toLowerCase().trim();
         if (billItem === "call") {
             billTotal += 2.75;
         } else if (billItem === "sms") {
@@ -47,7 +47,7 @@ function refreshStringInput(){
     let billTotalElement = document.querySelector(".billTotal");
     let total = document.querySelector(".total");
 
-    billTotalElement.innerHTML = 0;
+    billTotalElement.innerHTML = (0).toFixed(2);
     total.style.color = "black";
 
 
