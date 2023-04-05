@@ -1,15 +1,3 @@
-// get a reference to the text box where the bill type is to be entered
-
-//get a reference to the add button
-
-//create a variable that will keep track of the total bill
-
-//add an event listener for when the add button is pressed
-
-//in the event listener check if the value in the bill type text box is 'sms' or 'call'
-// * add the appropriate value to the running total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen
 
 function addBtnClicked() {
     let billItem = document.querySelector(".billTypeText").value; // This contains either sms or call
@@ -21,10 +9,10 @@ function addBtnClicked() {
 
     switch (billItem.toLowerCase().trim() ) {
         case "call":
-            callTotal.innerHTML = Number(callTotal.textContent) + 2.75;
+            callTotal.innerHTML = (Number(callTotal.textContent) + 2.75).toFixed(2) ;
             break;
         case "sms":
-            smsTotal.innerHTML = Number(smsTotal.textContent) + 0.75;
+            smsTotal.innerHTML = (Number(smsTotal.textContent) + 0.75).toFixed(2);
             break;
         default:
             errorMessage.style.display = "block";
@@ -34,7 +22,7 @@ function addBtnClicked() {
             
             
     }
-    grandTotal.innerHTML = Number(smsTotal.textContent) + Number(callTotal.textContent);
+    grandTotal.innerHTML = (Number(smsTotal.textContent) + Number(callTotal.textContent)).toFixed(2) ;
 
     if (Number(grandTotal.textContent) > 30 && Number(grandTotal.textContent) < 50) {
         colorChange.style.color = "orange";

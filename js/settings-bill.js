@@ -48,6 +48,11 @@ function settingsAddBtnClicked() {
                 invalidCallorSMS.style.display = "none";
             }, 5000);
         }
+    }else{
+        criticalLevelReached.style.display = "block";
+        setTimeout(() => {
+            criticalLevelReached.style.display = "none";
+        }, 5000);
     }
 
     if (warningLevelSetting && criticalLevelSetting) {
